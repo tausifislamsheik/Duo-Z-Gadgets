@@ -37,15 +37,30 @@ const displayPhones = phones =>{
 
         `
         phoneContainer.appendChild(phoneCard);
-    })
+
+    });
+    // Hide loading spinner
+    
+    toggleLoadingSpinner(false)
 }
 
 
 const handleSearch = () =>{
+    toggleLoadingSpinner(true);
     const inputField = document.getElementById('input-field');
     const inputText = inputField.value;
     console.log(inputText)
     loadPhone(inputText);
+}
+
+
+const toggleLoadingSpinner = (isLoading) =>{
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if(isLoading){
+        loadingSpinner.classList.remove('hidden');
+    }else{
+        loadingSpinner.classList.add('hidden');
+    }
 }
 
 loadPhone();
